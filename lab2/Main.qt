@@ -1,0 +1,50 @@
+abstract class Figure {
+    abstract fun getArea(): Double
+    abstract fun getPerimeter(): Double
+}
+
+class Rectangle(val width: Double, val height: Double) : Figure() {
+    override fun getArea(): Double {
+        return width * height
+    }
+
+    override fun getPerimeter(): Double {
+        return 2 * (width + height)
+    }
+}
+
+class Circle(val radius: Double) : Figure() {
+    override fun getArea(): Double {
+        return Math.PI * radius * radius
+    }
+
+    override fun getPerimeter(): Double {
+        return 2 * Math.PI * radius
+    }
+}
+
+class Triangle(val a: Double, val b: Double, val c: Double) : Figure() {
+    override fun getArea(): Double {
+        val s = (a + b + c) / 2.0
+        return Math.sqrt(s * (s - a) * (s - b) * (s - c))
+    }
+
+    override fun getPerimeter(): Double {
+        return a + b + c
+    }
+}
+
+fun main() {
+    val rectangle = Rectangle(5.0, 10.0)
+    val circle = Circle(3.0)
+    val triangle = Triangle(4.0, 5.0, 6.0)
+
+    println("Площа прямокутника: ${rectangle.getArea()}")
+    println("Периметр прямокутника: ${rectangle.getPerimeter()}")
+
+    println("Площа кола: ${circle.getArea()}")
+    println("Периметр кола: ${circle.getPerimeter()}")
+
+    println("Площа трикутника: ${triangle.getArea()}")
+    println("Периметр трикутника: ${triangle.getPerimeter()}")
+}

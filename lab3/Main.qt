@@ -1,0 +1,18 @@
+fun getAverage(numbers: List<Int?>): Double {
+    var sum = 0
+    var count = 0
+    for (number in numbers) {
+        if (number != null) {
+            sum += number
+            count++
+        }
+    }
+    return if (count > 0) sum.toDouble() / count else 0.0
+}
+
+
+fun main() {
+    val numbers = listOf(3, null, 8, 5, null, 12)
+    val average = getAverage(numbers)
+    println("Середнє арифметичне ненульових значень: $average")
+}
